@@ -47,21 +47,6 @@ function handleBtnClearClick() {
 
 }
 
-function handleKeyPress(event) {
-    let theEvent = event;
-    let key = event.keyCode || theEvent.which;
-    key = String.fromCharCode(key);
-    let regex = /^-?\d*\.?\d*$/;
-    if(!regex.test(key)) {
-        theEvent.returnValue = false;
-        if(theEvent.preventDefault) theEvent.preventDefault();
-    }
-}
-
-function isNumber(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-}
-
 function inputErrors() {
     if(!isNumber(inputNumber1.value)) {
         inputNumber1.classList.add("input-error")
@@ -74,5 +59,20 @@ function inputErrors() {
     }
     else {
         inputNumber2.classList.remove("input-error")
+    }
+}
+
+function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function handleKeyPress(event) {
+    let theEvent = event;
+    let key = event.keyCode || theEvent.which;
+    key = String.fromCharCode(key);
+    let regex = /^-?\d*\.?\d*$/;
+    if(!regex.test(key)) {
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
     }
 }
